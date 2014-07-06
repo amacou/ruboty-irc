@@ -18,10 +18,9 @@ module Ruboty
       end
 
       def say(message)
-        p message.raw
-        client.notice(message[:body])
-        client.privmsg(message[:body])
-        client.privmsg("test")
+        client.notice("notice")
+        client.privmsg("privmsg")
+
 
 
 
