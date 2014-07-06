@@ -11,8 +11,9 @@ module Ruboty
       env :IRC_CHANNEL, "Room name ruboty first logs in (e.g. 12345_room_a,12345_room_b)"
 
       def run
-        bind
-        connect
+        client.run!
+        #bind
+        #connect
       rescue Interrupt
         exit
       end
@@ -39,12 +40,6 @@ module Ruboty
       end
 
       private
-
-      def jid
-        jid = Xrc::Jid.new(ENV["IRC_JID"])
-        jid.resource = "bot"
-        jid.to_s
-      end
 
       def server
         ENV["IRC_SERVER_NAME"]
