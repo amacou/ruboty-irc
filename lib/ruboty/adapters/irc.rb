@@ -18,12 +18,15 @@ module Ruboty
       end
 
       def say(message)
-        client.say(
-          body: message[:code] ? "/quote #{message[:body]}" : message[:body],
-          from: message[:from],
-          to: message[:original][:type] == "chat" ? message[:to] + "/resource" : message[:to],
-          type: message[:original][:type],
-        )
+        p message
+        client.notice(message)
+
+        #client.say(
+        #  body: message[:code] ? "/quote #{message[:body]}" : message[:body],
+        #  from: message[:from],
+        #  to: message[:original][:type] == "chat" ? message[:to] + "/resource" : message[:to],
+        #  type: message[:original][:type],
+        #)
       end
 
       private
@@ -64,7 +67,6 @@ module Ruboty
       end
 
       def on_message(message)
-        p message
         robot.receive(
           body: message.body,
           from: message.from,
