@@ -7,7 +7,7 @@ module Ruboty
 
       env :IRC_SERVER_NAME, "Account's JID (e.g. 12345_67890@chat.IRC.com)"
       env :IRC_NICKNAME, "Account's nickname, which must match the name on the IRC account (e.g. ruboty)"
-      env :IRC_PASSWORD, "Account's password (e.g. xxx)"
+      #env :IRC_PASSWORD, "Account's password (e.g. xxx)"
       env :IRC_CHANNEL, "Room name ruboty first logs in (e.g. 12345_room_a,12345_room_b)"
 
       def run
