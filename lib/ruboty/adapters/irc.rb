@@ -55,8 +55,8 @@ module Ruboty
       end
 
       def bind
-        @client.on_privmsg(&method(:on_message))
-        @client.on_message(&method(:on_message))
+        client.on_privmsg(&method(:on_message))
+        client.on_message(&method(:on_message))
       end
 
       def connect
