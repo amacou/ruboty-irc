@@ -35,7 +35,6 @@ module Ruboty
           port: 6667,
           channel: channel,
           username: nickname,
-          password: password,
         )
       end
 
