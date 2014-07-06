@@ -5,10 +5,10 @@ module Ruboty
     class Irc < Base
       include Mem
 
-      env :IRC_SERVER_NAME, "Account's JID (e.g. 12345_67890@chat.IRC.com)"
+      env :IRC_SERVER_NAME, ""
       env :IRC_NICKNAME, "Account's nickname, which must match the name on the IRC account (e.g. ruboty)"
       #env :IRC_PASSWORD, "Account's password (e.g. xxx)"
-      env :IRC_CHANNEL, "Room name ruboty first logs in (e.g. 12345_room_a,12345_room_b)"
+      env :IRC_CHANNEL, "Channel name ruboty first logs in (e.g. #test)"
 
       def run
         bind
@@ -18,17 +18,7 @@ module Ruboty
       end
 
       def say(message)
-        client.notice(channel, "aaaa")
         client.notice(channel, message[:body])
-
-
-
-        #client.say(
-        #  body: message[:code] ? "/quote #{message[:body]}" : message[:body],
-        #  from: message[:from],
-        #  to: message[:original][:type] == "chat" ? message[:to] + "/resource" : message[:to],
-        #  type: message[:original][:type],
-        #)
       end
 
       private
@@ -61,7 +51,6 @@ module Ruboty
 
       def bind
         client.on_privmsg(&method(:on_message))
-        #client.on_message(&method(:on_message))
       end
 
       def connect
@@ -72,23 +61,9 @@ module Ruboty
         robot.receive(
           body: message.body,
           from: message.from,
-          #from_name: username_of(message),
           to: message.to,
           type: message.type,
         )
-      end
-
-      def on_invite(message)
-        client.join(message.from)
-      end
-
-      def username_of(message)
-        case message.type
-        when "groupchat"
-          Xrc::Jid.new(message.from).resource
-        else
-          client.users[message.from].name
-        end
       end
     end
   end
