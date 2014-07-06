@@ -64,6 +64,7 @@ module Ruboty
       end
 
       def on_message(message)
+        p message
         robot.receive(
           body: message.body,
           from: message.from,
