@@ -5,10 +5,10 @@ module Ruboty
     class Irc < Base
       include Mem
 
-      env :IRC_JID, "Account's JID (e.g. 12345_67890@chat.IRC.com)"
+      env :IRC_SERVER_NAME, "Account's JID (e.g. 12345_67890@chat.IRC.com)"
       env :IRC_NICKNAME, "Account's nickname, which must match the name on the IRC account (e.g. ruboty)"
       env :IRC_PASSWORD, "Account's password (e.g. xxx)"
-      env :IRC_ROOM_NAME, "Room name ruboty first logs in (e.g. 12345_room_a,12345_room_b)"
+      env :IRC_CHANNEL, "Room name ruboty first logs in (e.g. 12345_room_a,12345_room_b)"
 
       def run
         bind
@@ -29,11 +29,11 @@ module Ruboty
       private
 
       def client
-        @client ||= Xrc::Client.new(
-          jid: jid,
+        @client ||= Zircon.new(
+          server: server,
+          channel: channel,
           nickname: nickname,
           password: password,
-          room_jid: room_jids.join(","),
         )
       end
 
@@ -45,15 +45,12 @@ module Ruboty
         jid.to_s
       end
 
-      # @note IRC_ROOM_NAME can be ASCII-8BIT
-      def room_jids
-        room_names.map do |room_name|
-          room_name.force_encoding("UTF-8") + "@conf.IRC.com"
-        end
+      def server
+        ENV["IRC_SERVER_NAME"]
       end
 
-      def room_names
-        ENV["IRC_ROOM_NAME"].split(",")
+      def server
+        ENV["IRC_CHANNEL"]
       end
 
       def password
@@ -78,7 +75,7 @@ module Ruboty
         robot.receive(
           body: message.body,
           from: message.from,
-          from_name: username_of(message),
+          #from_name: username_of(message),
           to: message.to,
           type: message.type,
         )
