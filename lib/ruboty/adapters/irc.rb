@@ -18,8 +18,9 @@ module Ruboty
       end
 
       def say(message)
-        p message[:body]
         client.notice(channel, "aaaa")
+        client.notice(channel, message[:body])
+
 
 
         #client.say(
@@ -60,7 +61,7 @@ module Ruboty
 
       def bind
         client.on_privmsg(&method(:on_message))
-        client.on_message(&method(:on_message))
+        #client.on_message(&method(:on_message))
       end
 
       def connect
