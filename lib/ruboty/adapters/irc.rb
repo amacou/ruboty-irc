@@ -1,4 +1,4 @@
-require "xrc"
+require "zircon"
 
 module Ruboty
   module Adapters

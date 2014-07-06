@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["masayuki_oguni.dev@gmail.com"]
   spec.summary       = "a"
   spec.description   = "b"
-  spec.homepage      = "c"
+  spec.homepage      = ""
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "ruboty"
-  spec.add_dependency "xrc", ">= 0.1.1"
+  spec.add_dependency "zircon", ">= 0.0.8"
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
