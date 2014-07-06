@@ -21,6 +21,8 @@ module Ruboty
         p message[:body]
         client.notice(message[:body])
         client.privmsg(message[:body])
+        client.privmsg("test")
+
 
 
         #client.say(
