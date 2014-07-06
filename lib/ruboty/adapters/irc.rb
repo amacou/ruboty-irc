@@ -18,7 +18,7 @@ module Ruboty
       end
 
       def say(message)
-        Zircon.new.privmsg(channel, ":message")
+        client.privmsg(channel, ":message")
 
 
         #client.say(
