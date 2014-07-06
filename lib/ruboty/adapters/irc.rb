@@ -11,9 +11,8 @@ module Ruboty
       env :IRC_CHANNEL, "Room name ruboty first logs in (e.g. 12345_room_a,12345_room_b)"
 
       def run
+        bind
         client.run!
-        #bind
-        #connect
       rescue Interrupt
         exit
       end
@@ -56,8 +55,8 @@ module Ruboty
       end
 
       def bind
-        client.on_privmsg(&method(:on_message))
-        client.on_message(&method(:on_message))
+        @client.on_privmsg(&method(:on_message))
+        @client.on_message(&method(:on_message))
       end
 
       def connect
