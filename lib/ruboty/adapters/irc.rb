@@ -5,10 +5,10 @@ module Ruboty
     class Irc < Base
       include Mem
 
-      env :HIPCHAT_JID, "Account's JID (e.g. 12345_67890@chat.hipchat.com)"
-      env :HIPCHAT_NICKNAME, "Account's nickname, which must match the name on the HipChat account (e.g. ruboty)"
-      env :HIPCHAT_PASSWORD, "Account's password (e.g. xxx)"
-      env :HIPCHAT_ROOM_NAME, "Room name ruboty first logs in (e.g. 12345_room_a,12345_room_b)"
+      env :IRC_JID, "Account's JID (e.g. 12345_67890@chat.IRC.com)"
+      env :IRC_NICKNAME, "Account's nickname, which must match the name on the IRC account (e.g. ruboty)"
+      env :IRC_PASSWORD, "Account's password (e.g. xxx)"
+      env :IRC_ROOM_NAME, "Room name ruboty first logs in (e.g. 12345_room_a,12345_room_b)"
 
       def run
         bind
@@ -40,28 +40,28 @@ module Ruboty
       private
 
       def jid
-        jid = Xrc::Jid.new(ENV["HIPCHAT_JID"])
+        jid = Xrc::Jid.new(ENV["IRC_JID"])
         jid.resource = "bot"
         jid.to_s
       end
 
-      # @note HIPCHAT_ROOM_NAME can be ASCII-8BIT
+      # @note IRC_ROOM_NAME can be ASCII-8BIT
       def room_jids
         room_names.map do |room_name|
-          room_name.force_encoding("UTF-8") + "@conf.hipchat.com"
+          room_name.force_encoding("UTF-8") + "@conf.IRC.com"
         end
       end
 
       def room_names
-        ENV["HIPCHAT_ROOM_NAME"].split(",")
+        ENV["IRC_ROOM_NAME"].split(",")
       end
 
       def password
-        ENV["HIPCHAT_PASSWORD"]
+        ENV["IRC_PASSWORD"]
       end
 
       def nickname
-        ENV["HIPCHAT_NICKNAME"]
+        ENV["IRC_NICKNAME"]
       end
 
       def bind
