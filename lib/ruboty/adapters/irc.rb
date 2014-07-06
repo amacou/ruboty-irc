@@ -19,7 +19,7 @@ module Ruboty
 
       def say(message)
         p message[:body]
-        client.privmsg(channel, "aaaa")
+        client.notice(channel, "aaaa")
 
 
         #client.say(
