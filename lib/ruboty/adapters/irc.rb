@@ -18,7 +18,7 @@ module Ruboty
       end
 
       def say(message)
-        p message
+        p message[:body]
         client.notice(message[:body])
 
         #client.say(
