@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Ruboty::Irc::VERSION
   spec.authors       = ["masayuki_oguni"]
   spec.email         = ["masayuki_oguni.dev@gmail.com"]
-  spec.summary       = ""
-  spec.description   = ""
-  spec.homepage      = ""
+  spec.summary       = "a"
+  spec.description   = "b"
+  spec.homepage      = "c"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -18,9 +18,9 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "ruboty"
+  spec.add_dependency "xrc", ">= 0.1.1"
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
-  spec.add_dependency "ruboty"
-  spec.add_dependency "xrc", ">= 0.1.1"
 end
