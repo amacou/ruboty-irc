@@ -40,7 +40,6 @@ module Ruboty
       end
 
       private
-
       def server
         ENV["IRC_SERVER_NAME"]
       end
@@ -58,9 +57,8 @@ module Ruboty
       end
 
       def bind
-        client.on_private_message(&method(:on_message))
-        client.on_room_message(&method(:on_message))
-        client.on_invite(&method(:on_invite))
+        client.on_privmsg(&method(:on_message))
+        client.on_message(&method(:on_message))
       end
 
       def connect
