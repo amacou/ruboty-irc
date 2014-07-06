@@ -19,7 +19,7 @@ module Ruboty
 
       def say(message)
         p message
-        client.notice(message)
+        client.notice(message[:body])
 
         #client.say(
         #  body: message[:code] ? "/quote #{message[:body]}" : message[:body],
