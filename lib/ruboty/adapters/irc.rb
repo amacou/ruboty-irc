@@ -27,7 +27,7 @@ module Ruboty
       def client
         @client ||= Zircon.new(
           server: server,
-          port: 6667,
+          port: port || 6667,
           channel: channel,
           username: nickname,
         )
@@ -36,6 +36,10 @@ module Ruboty
       private
       def server
         ENV["IRC_SERVER"]
+      end
+
+      def port
+        ENV["IRC_PORT"]
       end
 
       def channel
