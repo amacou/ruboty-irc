@@ -29,7 +29,7 @@ module Ruboty
           server: server,
           port: port || 6667,
           channel: channel,
-          username: nickname,
+          username: nickname || :ruboty,
         )
       end
 
