@@ -26,7 +26,7 @@ module Ruboty
           client.notice(channel, "ruboty")
           client.notice(channel, "/who am i")
           client.notice(channel, "i\\?/i")
-          client.notice(channel, "- ")
+          client.notice(channel, "- a")
           client.notice(channel, "Answer who you are")
           client.notice(channel, "test")
           client.notice(channel, "te st")
