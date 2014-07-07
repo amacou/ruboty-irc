@@ -5,9 +5,10 @@ module Ruboty
     class Irc < Base
       include Mem
 
-      env :IRC_SERVER_NAME, ""
+      env :IRC_SERVER, "",
+      env :IRC_PORT, "", optional: true
       env :IRC_NICKNAME, "Account's nickname, which must match the name on the IRC account (e.g. ruboty)"
-      #env :IRC_PASSWORD, "Account's password (e.g. xxx)"
+      env :IRC_PASSWORD, "Account's password (e.g. xxx)" optional: true
       env :IRC_CHANNEL, "Channel name ruboty first logs in (e.g. #test)"
 
       def run

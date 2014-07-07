@@ -8,9 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Ruboty::Irc::VERSION
   spec.authors       = ["masayuki_oguni"]
   spec.email         = ["masayuki_oguni.dev@gmail.com"]
-  spec.summary       = "a"
-  spec.description   = "b"
-  spec.homepage      = ""
+  spec.summary       = "IRC adapter for Ruboty."
+  spec.homepage      = "https://github.com/masayukioguni/ruboty-irc"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -22,5 +21,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency "zircon", ">= 0.0.8"
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec"
 end
