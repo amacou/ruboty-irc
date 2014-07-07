@@ -20,23 +20,7 @@ module Ruboty
 
       def say(message)
         message[:body].split("\n").each do | msg | 
-          client.notice(channel,  "ruboty /who am i\\?/i")
-          client.notice(channel,  "ruboty /who am i\\?/i")
-          client.notice(channel,  "- Answer who you are")
-          client.notice(channel, "ruboty")
-          client.notice(channel, "/who am i")
-          client.notice(channel, "i\\?/i")
-          client.notice(channel, "- a")
-          client.notice(channel, "Answer who you are")
-          client.notice(channel, "test")
-          client.notice(channel, "te st")
-          
-          
-          
-          
-          
-          
-
+          client.notice(channel,msg)
         end 
       end
 
