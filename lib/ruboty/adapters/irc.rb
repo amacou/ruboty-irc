@@ -5,12 +5,12 @@ module Ruboty
     class Irc < Base
       include Mem
 
-      env :IRC_SERVER, ""
-      env :IRC_PORT, "" ,optional: true
-      env :IRC_NICKNAME, "Account's nickname, which must match the name on the IRC account (e.g. ruboty)"
+      env :IRC_SERVER, "IRC server name"
+      env :IRC_PORT, "IRC port" ,optional: true
+      env :IRC_USERNAME, " IRC user name (e.g. ruboty)", optional: true 
       env :IRC_PASSWORD, "Account's password (e.g. xxx)" ,optional: true
       env :IRC_CHANNEL, "Channel name ruboty first logs in (e.g. #test)"
-
+     
       def run
         bind
         client.run!
@@ -19,6 +19,7 @@ module Ruboty
       end
 
       def say(message)
+        p message[:body]
         client.notice(channel, message[:body])
       end
 
@@ -27,9 +28,9 @@ module Ruboty
       def client
         @client ||= Zircon.new(
           server: server,
-          port: port || 6667,
+          port: port,
           channel: channel,
-          username: nickname || :ruboty,
+          username: username,
         )
       end
 
@@ -39,7 +40,7 @@ module Ruboty
       end
 
       def port
-        ENV["IRC_PORT"]
+        ENV["IRC_PORT"] || 6667
       end
 
       def channel
@@ -50,16 +51,12 @@ module Ruboty
         ENV["IRC_PASSWORD"]
       end
 
-      def nickname
-        ENV["IRC_NICKNAME"]
+      def username
+        ENV["IRC_USERNAME"] || :ruboty
       end
 
       def bind
         client.on_privmsg(&method(:on_message))
-      end
-
-      def connect
-        client.connect
       end
 
       def on_message(message)
