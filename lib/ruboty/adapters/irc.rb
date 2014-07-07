@@ -20,12 +20,18 @@ module Ruboty
 
       def say(message)
         message[:body].split("\n").each do | msg | 
-          client.privmsg(channel,  "ruboty /who am i\\?/i")
-          client.privmsg(channel,  "ruboty /who am i\\?/i")
-          client.privmsg(channel,  "- Answer who you are")
-
+          client.notice(channel,  "ruboty /who am i\\?/i")
+          client.notice(channel,  "ruboty /who am i\\?/i")
+          client.notice(channel,  "- Answer who you are")
+          client.notice(channel, "ruboty")
+          client.notice(channel, "/who am i")
+          client.notice(channel, "i\\?/i")
+          client.notice(channel, "- ")
+          client.notice(channel, "Answer who you are")
           
-          client.notice(channel, "01234567890012345678900123456789001234567890\n")
+          
+          
+          
 
         end 
       end
