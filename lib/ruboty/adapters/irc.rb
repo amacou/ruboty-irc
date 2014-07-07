@@ -21,7 +21,7 @@ module Ruboty
       def say(message)
         message[:body].split("\n").each do | msg | 
           p msg
-          client.notice(channel, msg)
+          client.notice(channel,  msg.chomp)
           client.notice(channel, "a")
         end 
       end
