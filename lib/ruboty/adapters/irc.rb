@@ -52,7 +52,7 @@ module Ruboty
       end
 
       def username
-        ENV["IRC_USERNAME"] || :ruboty
+        ENV["IRC_USERNAME"] || "ruboty"
       end
 
       def bind
