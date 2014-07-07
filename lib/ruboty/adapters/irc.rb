@@ -20,9 +20,9 @@ module Ruboty
 
       def say(message)
         message[:body].split("\n").each do | msg | 
-          p msg
+          client.privmsg(channel,  msg.chomp)
           client.notice(channel,  msg.chomp)
-          client.notice(channel, "a\n")
+          client.notice(channel, "01234567890\n")
         end 
       end
 
