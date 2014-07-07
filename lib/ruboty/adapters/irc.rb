@@ -19,7 +19,7 @@ module Ruboty
       end
 
       def say(message)
-        message[:body].split("\n").each do | MSG | 
+        message[:body].split("\n").each do | msg | 
           client.notice(channel, msg)
         end 
       end
