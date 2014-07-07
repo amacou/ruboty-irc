@@ -35,7 +35,7 @@ module Ruboty
 
       private
       def server
-        ENV["IRC_SERVER_NAME"]
+        ENV["IRC_SERVER"]
       end
 
       def channel
