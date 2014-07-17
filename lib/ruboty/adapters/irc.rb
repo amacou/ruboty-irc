@@ -7,10 +7,13 @@ module Ruboty
 
       env :IRC_SERVER, "IRC server name"
       env :IRC_PORT, "IRC port" ,optional: true
-      env :IRC_USERNAME, " IRC user name (e.g. ruboty)", optional: true 
+      env :IRC_USE_SSL, "IRC use ssl (default: false)" ,optional: true
+      env :IRC_USERNAME, " IRC user name (e.g. ruboty)", optional: true
+      env :IRC_NICKNAME, " IRC nick name (e.g. ruboty)", optional: true
+      env :IRC_REALNAME, " IRC real name (e.g. ruboty)", optional: true
       env :IRC_PASSWORD, "Account's password (e.g. xxx)" ,optional: true
       env :IRC_CHANNEL, "Channel name ruboty first logs in (e.g. #test)"
-     
+
       def run
         bind
         client.run!
@@ -19,9 +22,9 @@ module Ruboty
       end
 
       def say(message)
-        message[:body].split("\n").each do | msg | 
+        message[:body].split("\n").each do | msg |
           client.notice(channel,":" + msg)
-        end 
+        end
       end
 
       private
@@ -30,8 +33,11 @@ module Ruboty
         @client ||= Zircon.new(
           server: server,
           port: port,
+          use_ssl: use_ssl,
           channel: channel,
           username: username,
+          nickname: nickname,
+          realname: realname
         )
       end
 
@@ -44,6 +50,10 @@ module Ruboty
         ENV["IRC_PORT"] || 6667
       end
 
+      def use_ssl
+        ENV["IRC_USE_SSL"] || false
+      end
+
       def channel
         ENV["IRC_CHANNEL"]
       end
@@ -54,6 +64,14 @@ module Ruboty
 
       def username
         ENV["IRC_USERNAME"] || "ruboty"
+      end
+
+      def nickname
+        ENV["IRC_NICKNAME"] || "ruboty"
+      end
+
+      def realname
+        ENV["IRC_REALNAME"] || "ruboty"
       end
 
       def bind
