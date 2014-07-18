@@ -37,7 +37,8 @@ module Ruboty
           channel: channel,
           username: username,
           nickname: nickname,
-          realname: realname
+          realname: realname,
+          password: password
         )
       end
 
