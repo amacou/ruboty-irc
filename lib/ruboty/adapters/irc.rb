@@ -81,7 +81,7 @@ module Ruboty
 
       def on_message(message)
         robot.receive(
-          body: message.body,
+          body: message.body.force_encoding('utf-8'),
           from: message.from,
           to: message.to,
           type: message.type,
