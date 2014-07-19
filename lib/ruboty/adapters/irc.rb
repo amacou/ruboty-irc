@@ -22,8 +22,9 @@ module Ruboty
       end
 
       def say(message)
+        message[:type] ||= :notice
         message[:body].split("\n").each do | msg |
-          client.notice(channel,":" + msg)
+          client.send(message[:type].to_sym, channel, ":#{msg}")
         end
       end
 
